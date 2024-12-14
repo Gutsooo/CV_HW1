@@ -68,12 +68,6 @@
 <li><strong>Output</strong>: Transformed or rotated image saved in PPM/PGM format</li>
 </ul>
 
-<h2>Author</h2>
-<p>Ahmad Mardani</p>
-<ul>
-<li><strong>Email</strong>: your-email@example.com</li>
-<li><strong>GitHub</strong>: <a href="https://github.com/yourusername">yourusername</a></li>
-</ul>
 
 <h2>Acknowledgments</h2>
 <p>Special thanks to the Computer Vision course instructor for assigning this project, which provides an excellent introduction to image processing concepts.</p>
