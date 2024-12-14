@@ -1,0 +1,48 @@
+function [image] = pnmreader(Filename)
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+% open file
+F = fopen(Filename);
+File_Content = fread(F,'uint8'); 
+index=1;
+while File_Content(index) ~= 10
+    index=index+1;
+end
+header = char(File_Content(1:index));
+split = textscan(header, '%s%d%d%d');
+magic_num = char(split{1});
+numbers = cell2mat(split(2:end));
+w = numbers(1,1);
+h = numbers(1,2);
+maxvalue = numbers(1,3);
+Image_Data = File_Content(index+1:end);
+
+if magic_num == 'P5'
+    I = zeros(h,w);
+    k=1;
+    for i=1:h
+        for j=1:w
+        I(i,j)=Image_Data(k);
+        k=k+1;
+        end
+    end
+    imshow(I,[])
+else magic_num == 'P6'
+     I = zeros(h,w,3);
+    
+    for z=1:3
+        n=1;
+        k=z;
+        for i=1:h
+            for j=1:w
+            I(i,j,z)=Image_Data(k);
+            k=3*n+z;
+            n=n+1;
+            end
+        end
+    end
+ 
+    imtool(uint8(I),[]);
+
+end
+end
